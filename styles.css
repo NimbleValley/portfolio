@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'TimesSquare';
+    src: url('fonts/TimesSquare-m105.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+h2 {
+    font-family: 'TimesSquare', sans-serif;
+}
+
+#world-canvas {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#project-scoreboard-video {
+    display: none;
+}
+
+#home-button {
+    position: fixed;
+    z-index: 10;
+
+    border: none;
+    padding-left: 13vh;
+    background-color: transparent;
+    font-size: 10vh;
+    margin: 2vh;
+
+    left: 0;
+
+    animation-name: home-plate-main;
+    animation-duration: 2s;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    transition: scale 0.25s, margin 0.25s;
+}
+
+#home-button::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    content: "";
+
+    width: 0;
+    height: 0;
+    border-left: 5vh solid transparent;
+    border-right: 5vh solid transparent;
+
+    border-bottom: 5vh solid white;
+
+    animation-name: home-plate-top;
+    animation-duration: 2s;
+}
+
+#home-button::after {
+    position: absolute;
+    left: 0;
+    top: 5vh;
+
+    content: "";
+
+    width: 10vh;
+    height: 6vh;
+    background-color: white;
+
+    animation-name: home-plate-bottom;
+    animation-duration: 2s;
+}
+
+@keyframes home-plate-top {
+    from {
+        border-bottom: 0vh solid white;
+        top: 5.15vh;
+    }
+
+    to {
+        border-bottom: 5vh solid white;
+        top: 0;
+    }
+}
+
+@keyframes home-plate-bottom {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 6vh;
+    }
+}
+
+@keyframes home-plate-main {
+    from {
+        padding-left: 0vh;
+        opacity: 0;
+        color: white;
+    }
+    
+    to {
+        padding-left: 13vh;
+        opacity: 1;
+        color: black;
+    }
+}
+
+#home-button:hover {
+    scale: 1.25;
+    cursor: pointer;
+    margin-left: 10vh;
+}
