@@ -13,6 +13,20 @@ h2 {
     font-family: 'TimesSquare', sans-serif;
 }
 
+h3 {
+    font-size: 12vh;
+    font-family: 'TimesSquare', sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+p {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 5vh;
+    margin: 0;
+    text-align: center;
+}
+
 #world-canvas {
     width: 100vw;
     height: 100vh;
@@ -65,7 +79,7 @@ h2 {
 #home-button::after {
     position: absolute;
     left: 0;
-    top: 5vh;
+    top: 4.8vh;
 
     content: "";
 
@@ -117,4 +131,85 @@ h2 {
     scale: 1.25;
     cursor: pointer;
     margin-left: 10vh;
+}
+
+#fader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: black;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+
+
+/* Introduction widget */
+
+#introduction-container {
+    display: flex;
+    position: fixed;
+    width: 90vh;
+    height: 80vh;
+    background-color: rgb(161, 158, 148);
+    margin-top: 10vh;
+    margin-left: calc(50vw - 45vh);
+    border-radius: 1vh;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 2vh;
+}
+
+#introduction-dark {
+    background-color: rgba(0, 0, 0, 0.623);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#exit-intorduction-button {
+    font-size: 10vh;
+    background-color: transparent;
+    border: solid 1vh rgb(155, 53, 45);
+    border-radius: 0.75vh;
+    padding: 1vh 4vh 1vh 4vh;
+    position: relative;
+    transition: scale 0.5s;
+    scale: 1;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 600;
+}
+
+#exit-intorduction-button:hover {
+    cursor: pointer;
+    scale: 1.1;
+    font-weight: 800;
+}
+
+#exit-intorduction-button::after {
+    content: "";
+    position: absolute;
+    background-color: rgb(155, 53, 45);
+    border-radius: 100vh;
+    width: 0%;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    transition: border-radius 0.25s ease-in-out, width 0.25s ease-in-out, height 0.15s ease-in-out, left 0.25s ease-in-out, top 0.15s ease-in-out, opacity 0.2s;
+    z-index: -1;
+    opacity: 0;
+}
+
+#exit-intorduction-button:hover::after {
+    width: 100%;
+    height: 100%;
+    border-radius: 0vh;
+    top: 0;
+    left: 0;
+    opacity: 1;
 }
