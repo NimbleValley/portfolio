@@ -63,7 +63,7 @@ p {
     left: 0;
     top: 0;
 
-    content: "";
+    content: '';
 
     width: 0;
     height: 0;
@@ -81,7 +81,7 @@ p {
     left: 0;
     top: 4.8vh;
 
-    content: "";
+    content: '';
 
     width: 10vh;
     height: 6vh;
@@ -192,7 +192,7 @@ p {
 }
 
 #exit-intorduction-button::after {
-    content: "";
+    content: '';
     position: absolute;
     background-color: rgb(155, 53, 45);
     border-radius: 100vh;
@@ -212,4 +212,52 @@ p {
     top: 0;
     left: 0;
     opacity: 1;
+}
+
+
+
+/* ABOUT SECTION */
+
+#about-container {
+    width: 100vw;
+    height: fit-content;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
+}
+
+#about-container::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('img/scorecard.png');
+    background-size: cover;
+    z-index: -1;
+    filter: brightness(0.5);
+}
+
+#about-section-title {
+    width: fit-content;
+    font-size: 10vw;
+    font-weight: 100;
+    background-color: rgb(121, 106, 75);
+    color: white;
+    text-shadow: black 0px 1vh 0.25vh;
+    float: right;
+    padding: 1vw;
+    border-left: solid 0.5vw black;
+    border-bottom: solid 0.5vw black;
+    transition: padding 0.25s, color 0.15s;
+}
+
+#about-section-title:hover {
+    cursor: grab;
+    padding-left: 5vw;
+    color: gold;
 }

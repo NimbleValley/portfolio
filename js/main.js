@@ -1,6 +1,6 @@
 import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js';
-import { fade, scoreboardProjectVideo, ui_fading } from './ui.js';
+import { fade, scoreboardProjectVideo, ui_fading, aboutContainer, openAboutSection } from './ui.js';
 
 var homeButton = document.getElementById('home-button');
 homeButton.addEventListener('click', toHome);
@@ -183,7 +183,7 @@ function homeLoop() {
             if (mouseDown && targetSection != 'about') {
                 targetSection = 'about';
                 document.body.appendChild(homeButton);
-                fade();
+                openAboutSection();
             }
         }
 
@@ -219,6 +219,8 @@ function projectLoop() {
 function toHome() {
     document.body.removeChild(homeButton);
     targetSection = 'home';
+
+    aboutContainer.style.display = 'none';
 }
 
 window.addEventListener('pointermove', onPointerMove);
