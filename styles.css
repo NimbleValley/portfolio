@@ -56,6 +56,8 @@ p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
     transition: scale 0.25s, margin 0.25s;
+    
+    text-shadow: white 0.25vh 0vw 0px, white -0.25vh 0vw 0px, white 0.25vh 0.25vh 0px, white 0vh 0.25vh 0px, white -0.25vh 0.25vh 0px, white 0.25vh -0.25vh 0px, white 0vh -0.25vh 0px, white -0.25vh -0.25vh 0px;
 }
 
 #home-button::before {
@@ -246,18 +248,21 @@ p {
     width: fit-content;
     font-size: 10vw;
     font-weight: 100;
-    background-color: rgb(121, 106, 75);
+    background-color: rgb(75, 121, 85);
     color: white;
     text-shadow: black 0px 1vh 0.25vh;
     float: right;
-    padding: 1vw;
+    padding: 1.1vw 2.1vw;
     border-left: solid 0.5vw black;
     border-bottom: solid 0.5vw black;
-    transition: padding 0.25s, color 0.15s;
+    transition: padding 0.25s, color 0.15s, text-shadow 0.25s;
+    text-shadow: transparent 0px 0px 0vh;
 }
 
 #about-section-title:hover {
     cursor: grab;
-    padding-left: 5vw;
+    padding-left: 5.85vw;
+    padding-right: 5.85vw;
     color: gold;
+    text-shadow: gold 0px 0px 1.5vh;
 }

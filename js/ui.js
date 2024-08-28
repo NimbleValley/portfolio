@@ -4,7 +4,7 @@ export const scoreboardProjectVideo = document.getElementById('project-scoreboar
 scoreboardProjectVideo.loop = true;
 
 const fullIntroductionContainer = document.getElementById('introduction-dark');
-const exitIntroductionButton = document.getElementById('exit-intorduction-button');
+export const exitIntroductionButton = document.getElementById('exit-intorduction-button');
 
 export var ui_fading = false;
 const fader = document.getElementById('fader');

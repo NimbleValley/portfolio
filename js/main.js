@@ -1,6 +1,6 @@
 import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js';
-import { fade, scoreboardProjectVideo, ui_fading, aboutContainer, openAboutSection } from './ui.js';
+import { fade, scoreboardProjectVideo, ui_fading, aboutContainer, openAboutSection, exitIntroductionButton } from './ui.js';
 
 var homeButton = document.getElementById('home-button');
 homeButton.addEventListener('click', toHome);
@@ -75,6 +75,10 @@ function loadScene() {
         stadium.name = 'stadium';
         scene.add(stadium);
         //loadingMessage.style.display = 'none';
+
+        // Main area is loaded so project is ready
+        exitIntroductionButton.disabled = false;
+        exitIntroductionButton.innerText = 'Enter';
     });
 
     loader.load(`models/about-button.glb`, function (model) {
@@ -198,6 +202,7 @@ function homeLoop() {
 
         if (intersects[i].object.name == 'Github001_1') {
             document.body.style.cursor = 'pointer';
+            //camera.lookAt(new THREE.Vector3(20, 35, 0));
             if (mouseDown && targetSection != 'github') {
                 targetSection = 'github';
                 window.open('https://github.com/NimbleValley');
