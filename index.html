@@ -18,14 +18,58 @@
 
     <div id="introduction-dark">
         <div id="introduction-container">
-            <h3>Mason McManus' Portfolio</h3>
+            <h3 style="color: gold;">Mason McManus' Portfolio</h3>
             <p>This is my baseball inspired developer portfolio. Click around to learn more about me & my projects.</p>
             <button id="exit-intorduction-button" disabled>Loading site...</button>
         </div>
     </div>
 
+    <h1 id="page-title"></h1>
+
     <div id="about-container">
         <h3 id="about-section-title">About Me</h3>
+        <div id="main-about-container">
+            <div id="about-overview-container">
+                <p>High school student interested in creating new things, both for fun & functionality. Fascinated by data & the pastimes it drives, such as baseball. Planning to pursue math & computer science in college and beyond.</p>
+            </div>
+            <div id="extra-about-container">
+                <p>Hover & Click to find out more:</p>
+                <div id="extra-about-button-container"></div>
+            </div>
+            <div class="about-feature" id="robotics-feature"></div>
+            <div class="about-feature" id="volunteer-feature"></div>
+            <div class="about-feature" id="baseball-feature"></div>
+            <div class="about-feature" id="school-feature"></div>
+            <div class="about-feature" id="profile-feature"></div>
+            <div id="about-feature-container">
+                <p>Profile & Qualifications:</p>
+                <p>Classwork & Classes:
+                    -Calculus III through UW Whitewater
+                    -COSC 2100 Data Structures through Marquette University
+                    -10+ AP Classes
+                    -3 College Classes
+
+                    Experience:
+                    -Congressional App Challenge winner 2023, 6th district
+                    -3+ articles written in collaboration with computer vision company Roboflow
+                    -Cybersecutiry camp through UW Whitewater
+                    -Cyberpatriot competitor
+
+                    Skills:
+                    -Java
+                    -HTML, CSS
+                    -Node & vanilla JavaScript
+                    -Full stack web development
+                    -Raspberry, orange pi with Kali Linux, Debian, Ubuntu, etc.
+                    -Infrequent usage of C#, python, C++, & niche languages such as gdscript
+                </p>
+                <p id="close-about-feature-button">Close</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="project-container">
+
     </div>
 
     <button id="home-button" onclick="">Home</button>
@@ -35,6 +79,7 @@
     <video src="video/projects-scoreboard.mkv" id="project-scoreboard-video"></video>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script type="module" src="js/cloudy.js" crossosrigin="anonymous"></script>
     <script type="module" src="js/ui.js"></script>
     <script type="module" src="js/main.js" crossorigin="anonymous"></script>
 </body>

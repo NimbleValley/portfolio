@@ -1,6 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js';
 import { fade, scoreboardProjectVideo, ui_fading, aboutContainer, openAboutSection, exitIntroductionButton } from './ui.js';
+import { setText, currentText } from './cloudy.js';
 
 var homeButton = document.getElementById('home-button');
 homeButton.addEventListener('click', toHome);
@@ -64,6 +65,14 @@ var tabObjects = {
     'github': {
         'button': null,
         'helper': null
+    },
+    'linkedin': {
+        'button': null,
+        'helper': null
+    },
+    'twitter': {
+        'button': null,
+        'helper': null
     }
 }
 
@@ -118,6 +127,20 @@ function loadScene() {
         scene.add(button);
         tabObjects.github.button = button;
     });
+
+    loader.load(`models/linked-in-button.glb`, function (model) {
+        let button = model.scene;
+        button.name = 'linked-in-button';
+        scene.add(button);
+        tabObjects.linkedin.button = button;
+    });
+
+    loader.load(`models/twitter-button.glb`, function (model) {
+        let button = model.scene;
+        button.name = 'twitter-button';
+        scene.add(button);
+        tabObjects.twitter.button = button;
+    });
 }
 
 const spotLight = new THREE.SpotLight(0xffffff, 10);
@@ -167,6 +190,8 @@ function animate() {
 }
 
 function homeLoop() {
+    let resetText = true;
+
     camera.position.lerp(new THREE.Vector3(-cameraPosition, 50 + Math.cos(clock.getElapsedTime() * 1.25) / 2, cameraPosition), 0.05);
     //camera.lookAt(new THREE.Vector3(0, 35, 0));
 
@@ -201,7 +226,10 @@ function homeLoop() {
         }
 
         if (intersects[i].object.name == 'Github001_1') {
+            resetText = false;
             document.body.style.cursor = 'pointer';
+            if (currentText != '@NimbleValley_on_GitHub')
+                setText('@NimbleValley_on_GitHub');
             //camera.lookAt(new THREE.Vector3(20, 35, 0));
             if (mouseDown && targetSection != 'github') {
                 targetSection = 'github';
@@ -209,7 +237,36 @@ function homeLoop() {
             }
         }
 
+        if (intersects[i].object.name == 'LinkedIn_1') {
+            resetText = false;
+            document.body.style.cursor = 'pointer';
+            if (currentText != 'Mason_McManus_on_LinkedIn')
+                setText('Mason_McManus_on_LinkedIn');
+            //camera.lookAt(new THREE.Vector3(20, 35, 0));
+            if (mouseDown && targetSection != 'linkedin') {
+                targetSection = 'linkedin';
+                window.open('https://www.linkedin.com/in/mason-mcmanus-752131279/');
+            }
+        }
+
+        if (intersects[i].object.name == 'Twitter_1' || intersects[i].object.name == 'Twitter_2') {
+            resetText = false;
+            document.body.style.cursor = 'pointer';
+            if (currentText != '@DistanceTracker_on_X/Twitter')
+                setText('@DistanceTracker_on_X/Twitter');
+            //camera.lookAt(new THREE.Vector3(20, 35, 0));
+            if (mouseDown && targetSection != 'twitter') {
+                targetSection = 'twitter';
+                window.open('https://x.com/distancetracker');
+            }
+        }
+
         mouseDown = 0;
+    }
+    if (resetText) {
+        if (currentText != 'Mason_McManus') {
+            setText('Mason_McManus');
+        }
     }
 }
 
@@ -232,3 +289,14 @@ window.addEventListener('pointermove', onPointerMove);
 
 loadScene();
 animate();
+
+window.addEventListener('resize', () => {
+
+    // Update camera
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    // Update renderer
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});

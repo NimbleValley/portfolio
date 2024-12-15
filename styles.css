@@ -3,6 +3,11 @@
     src: url('fonts/TimesSquare-m105.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Cloudy';
+    src: url('fonts/SoCloudy-PV7yd.otf') format('opentype');
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -146,6 +151,46 @@ p {
     opacity: 0;
 }
 
+#page-title {
+    z-index: 1;
+    position: fixed;
+    font-size: 5vw;
+    color: white;
+    font-family: 'Cloudy', sans-serif;
+    color: white;
+    width: 100vw;
+    text-align: center;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    transition: scale 0.5s;
+}
+
+#page-title:hover {
+    scale: 1.1;
+}
+
+#page-title span{
+    display: block;
+    animation: cloud-bob infinite 2s ease-in-out;
+}
+
+@keyframes cloud-bob {
+    0% {
+        margin-top: -1.25vh;
+    }
+    25% {
+    }
+    50% {
+        margin-top: 1.25vh;
+    }
+    75% {
+    }
+    100% {
+        margin-top: -1.25vh;
+    }
+}
+
 
 
 /* Introduction widget */
@@ -155,7 +200,7 @@ p {
     position: fixed;
     width: 90vh;
     height: 80vh;
-    background-color: rgb(161, 158, 148);
+    background-color: rgb(90, 88, 83);
     margin-top: 10vh;
     margin-left: calc(50vw - 45vh);
     border-radius: 1vh;
@@ -163,6 +208,7 @@ p {
     justify-content: space-around;
     flex-direction: column;
     padding: 2vh;
+    color: white;
 }
 
 #introduction-dark {
@@ -172,6 +218,7 @@ p {
     top: 0;
     width: 100vw;
     height: 100vh;
+    z-index: 10;
 }
 
 #exit-intorduction-button {
@@ -185,6 +232,7 @@ p {
     scale: 1;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 600;
+    color: white;
 }
 
 #exit-intorduction-button:hover {
@@ -229,6 +277,153 @@ p {
     left: 0;
     display: none;
     opacity: 0;
+    z-index: 5;
+}
+
+#about-feature-container {
+    left: 59.8vw;
+    top: 19.8vw;
+    width: 37vw;
+    height: 29.4vw;
+    background-color: rgb(75, 121, 85);
+    position: fixed;
+    border: black solid 0.35vw;
+    display: none;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    white-space:pre-wrap;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+#close-about-feature-button {
+    position: sticky;
+    bottom: 0vw;
+    display: block;
+    width: calc(100% + 4vw);
+    text-align: center;
+    background-color: rgb(22, 43, 26);
+    border-top: 0.35vw solid black;
+    margin-left: -2vw;
+}
+
+#close-about-feature-button:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+#about-feature-container p:first-of-type {
+	font-weight: bold;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    font-size: 4vw;
+    height: fit-content;
+}
+
+#about-feature-container p {
+    font-size: 2vw;
+    line-height: 3.5vw;
+}
+
+.about-feature {
+    width: 7vw;
+    height: 7vw;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 90vw;
+    display: grid;
+    grid-template-columns: auto auto;
+    background-size: cover;
+    transition: width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    cursor: pointer;
+    border: black solid 0.35vw;
+}
+
+.about-feature:hover {
+    width: 14.8vw;
+}
+
+.about-feature:hover::after {
+    opacity: 1;
+}
+
+.about-feature::after {
+    font-size: 3.15vw;
+    color: white;
+    font-family: 'Chakra Petch', sans-serif;
+    line-height: 8vw;
+    margin: 0;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.9s;
+    background-color: rgb(75, 121, 85);
+    overflow: hidden;
+    width: 105%;
+}
+
+#robotics-feature {
+    left: 59.8vw;
+    top: 27.3vw;
+    background-image: url('img/robotics.png');
+    background-position: -1.1vw;
+}
+
+#robotics-feature::after {
+    content: 'Robotics';
+}
+
+#volunteer-feature {
+    left: 74.6vw;
+    top: 27.3vw;
+    background-image: url('img/volunteer.png');
+    background-position: 0vw;
+}
+
+#volunteer-feature::after {
+    content: 'Volunteer';
+}
+
+#baseball-feature {
+    left: 67.3vw;
+    top: 34.6vw;
+    background-image: url('img/brewers.png');
+    background-position: -0vw;
+    background-color: white;
+}
+
+#baseball-feature::after {
+    content: 'Baseball!';
+    width: 108%;
+}
+
+#school-feature {
+    left: 59.8vw;
+    top: 42vw;
+    background-image: url('img/school.png');
+    background-position: -0vw;
+    background-color: white;
+}
+
+#school-feature::after {
+    content: 'At school';
+    width: 108%;
+}
+
+#profile-feature {
+    left: 74.6vw;
+    top: 42vw;
+    background-image: url('img/profile.png');
+    background-position: -0vw;
+    background-color: white;
+}
+
+#profile-feature::after {
+    content: 'Profile';
+    width: 125%;
 }
 
 #about-container::after {
@@ -265,4 +460,69 @@ p {
     padding-right: 5.85vw;
     color: gold;
     text-shadow: gold 0px 0px 1.5vh;
+}
+
+#main-about-container {
+    min-height: 50vh;
+    top: 12.4vw;
+    position: fixed;
+    width: 92vw;
+    left: 8vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 90vw;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#about-overview-container {
+    background-color: rgb(75, 121, 85);
+    width: 40.2vw;
+    color: white;
+    font-size: 5vh;
+    padding: 2vw;
+    font-family: 'Chakra Petch', sans-serif;
+    border: black solid 0.35vw;
+    min-height: 25.25vw;
+    display: flex;
+    align-items: center;
+    line-height: 7vh;
+    transition: line-height 0.25s;
+}
+
+#about-overview-container:hover {
+    line-height: 9vh;
+    cursor: grab;
+}
+
+#extra-about-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2vw;
+    p {
+        margin: 0;
+        font-weight: bold;
+        text-shadow: white 0.25vh 0vw 0px, white -0.25vh 0vw 0px, white 0.25vh 0.25vh 0px, white 0vh 0.25vh 0px, white -0.25vh 0.25vh 0px, white 0.25vh -0.25vh 0px, white 0vh -0.25vh 0px, white -0.25vh -0.25vh 0px;
+        transition: scale 0.15s;
+    }
+
+    p:hover {
+        scale: 1.1;
+    }
+}
+
+
+/* PROJECTS */
+
+#project-container {
+    width: 100vw;
+    height: fit-content;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
+    z-index: 5;
+    background-color: black;
 }
