@@ -1,6 +1,6 @@
 import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js';
-import { fade, scoreboardProjectVideo, ui_fading, aboutContainer, openAboutSection, exitIntroductionButton } from './ui.js';
+import { scoreboardProjectVideo, aboutContainer, openAboutSection, openProjectSection, exitIntroductionButton, projectsTitle, projectContainer} from './ui.js';
 import { setText, currentText } from './cloudy.js';
 
 var homeButton = document.getElementById('home-button');
@@ -190,6 +190,8 @@ function animate() {
 }
 
 function homeLoop() {
+    //camera.setFocalLength(22.599516612411783);
+
     let resetText = true;
 
     camera.position.lerp(new THREE.Vector3(-cameraPosition, 50 + Math.cos(clock.getElapsedTime() * 1.25) / 2, cameraPosition), 0.05);
@@ -222,6 +224,7 @@ function homeLoop() {
             if (mouseDown && targetSection != 'project') {
                 targetSection = 'project';
                 document.body.appendChild(homeButton);
+                openProjectSection();
             }
         }
 
@@ -275,7 +278,10 @@ function aboutLoop() {
 }
 
 function projectLoop() {
-    camera.position.lerp(new THREE.Vector3(10, 25, -90), 0.05);
+    camera.position.lerp(new THREE.Vector3(10, 29.75, -90), 0.05);
+    //camera.setFocalLength(camera.getFocalLength() * 1.02);
+
+    projectsTitle.style.transform = `rotate3d(${(-pointer.y) *5}, ${(-pointer.x) *5}, 0,${Math.sqrt((pointer.x*pointer.x) + (pointer.y*pointer.y))*20}deg)`;
 }
 
 function toHome() {
@@ -283,6 +289,7 @@ function toHome() {
     targetSection = 'home';
 
     aboutContainer.style.display = 'none';
+    projectContainer.style.display = 'none';
 }
 
 window.addEventListener('pointermove', onPointerMove);
