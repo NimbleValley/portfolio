@@ -299,10 +299,10 @@ p {
 }
 
 #about-feature-container {
-    left: 59.8vw;
-    top: 19.8vw;
-    width: 37vw;
-    height: 29.4vw;
+    left: 52.0vw;
+    top: 7.5vw;
+    width: 34.9vw;
+    height: 21.8vw;
     background-color: rgb(75, 121, 85);
     position: absolute;
     border: black solid 0.35vw;
@@ -315,6 +315,19 @@ p {
     white-space: pre-wrap;
     padding-left: 1vw;
     padding-right: 1vw;
+}
+
+#about-feature-container p:first-of-type {
+    font-weight: bold;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    font-size: 3vw;
+    height: fit-content;
+}
+
+#about-feature-container p {
+    font-size: 1.8vw;
+    line-height: 3.25vw;
 }
 
 #close-about-feature-button {
@@ -331,19 +344,6 @@ p {
 #close-about-feature-button:hover {
     background-color: black;
     cursor: pointer;
-}
-
-#about-feature-container p:first-of-type {
-    font-weight: bold;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-    font-size: 4vw;
-    height: fit-content;
-}
-
-#about-feature-container p {
-    font-size: 2vw;
-    line-height: 3.5vw;
 }
 
 .about-feature {
@@ -461,8 +461,8 @@ p {
 
 #about-section-title:hover {
     cursor: grab;
-    padding-left: 5.85vw;
-    padding-right: 5.85vw;
+    padding-left: 5.5vw;
+    padding-right: 5.5vw;
     color: gold;
     text-shadow: gold 0px 0px 1.5vh;
 }
@@ -528,7 +528,7 @@ p {
     width: 100vw;
     height: fit-content;
     min-height: 100vh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: none;
@@ -538,6 +538,8 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #projects-title {
@@ -557,29 +559,33 @@ p {
 }
 
 #projects-title:hover {
-    scale: 1.15;
-    animation: title-rattle 0.4s ease-out;
 }
 
 @keyframes title-rattle {
     0% {
         margin-top: 4vh;
     }
+
     5% {
         margin-top: 0vh;
     }
+
     18% {
         margin-top: 3.5vh;
     }
+
     33% {
         margin-top: 0.5vh;
     }
+
     50% {
         margin-top: 3vh;
     }
+
     75% {
         margin-top: 1vh;
     }
+
     100% {
         margin-top: 2vh;
     }
@@ -635,6 +641,86 @@ p {
     text-shadow: 0 0 0.2vw rgba(255, 187, 0, 0.226);
 }
 
+#card-container {
+    height: fit-content;
+    position: absolute;
+    top: 15vw;
+    display: flex;
+    max-width: 90vw;
+    flex-wrap: wrap;
+    gap: 3vw;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10vw;
+}
+
+.project-card {
+    background-color: rgb(28, 37, 37);
+    width: 15vw;
+    height: 20vw;
+    padding: 2vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 0.75vw;
+    box-shadow: inset 2vw 2vw 10vw rgba(48, 84, 124, 0.63), inset -2vw -2vw 10vw rgba(159, 47, 173, 0.5), 0px 0px 7vw rgba(255, 217, 0, 0.377);
+    scale: 0.85;
+    transition: scale 0.25s, transform 0.2s, box-shadow 0.15s;
+
+    border: 0.35vw solid rgb(165, 165, 165);
+
+    h3 {
+        text-align: center;
+        position: absolute;
+        font-size: 2.75vw;
+        font-family: 'Chakra Petch', sans-serif;
+        text-shadow: 0 0 0.5vw rgba(255, 187, 0, 0.945);
+        color: white;
+        z-index: 2;
+    }
+
+    h3::after {
+        position: absolute;
+        left: 0;
+        top: 0vw;
+        content: attr(data-text);
+        font-size: inherit;
+        font-family: 'Chakra Petch', sans-serif;
+        text-shadow: 0 0 0.5vw rgba(255, 187, 0, 0.945);
+        color: rgba(0, 0, 0, 0.274);
+        scale: 1.05;
+        z-index: -1;
+    }
+
+    p {
+        position: absolute;
+        font-size: 1.75vw;
+        text-align: left;
+        max-width: 75%;
+        width: fit-content !important;
+        background-color: rgba(0, 0, 0, 0.486);
+        margin: -1vw;
+        border-bottom-left-radius: inherit;
+        padding-left: 0.5vw;
+        color: white;
+        bottom: 1vw;
+        left: 1vw;
+    }
+}
+
+.project-card:hover {
+    cursor: pointer;
+    scale: 1.05;
+    transform: rotate(0) !important;
+    box-shadow: inset 2vw 2vw 10vw rgb(0, 119, 255), inset -2vw -2vw 10vw rgb(225, 0, 255), 0px 0px 4vw rgba(255, 217, 0, 0.63);
+}
+
+
+
+/* SCROLLBAR */
+
+
 
 ::-webkit-scrollbar {
     width: 0.8vw;
@@ -643,9 +729,11 @@ p {
 ::-webkit-scrollbar-button {
     background: #3a3434
 }
+
 ::-webkit-scrollbar-track-piece {
     background: #363434
 }
+
 ::-webkit-scrollbar-thumb {
     background: #eee
 }

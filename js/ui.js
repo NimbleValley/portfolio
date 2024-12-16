@@ -94,6 +94,22 @@ export const projectContainer = document.getElementById('project-container');
 projectContainer.style.display = 'none';
 export const projectsTitle = document.getElementById('projects-title');
 
+const projectCards = document.getElementsByClassName('project-card');
+for(let i = 0; i < projectCards.length; i ++) {
+    if(i % 2 == 0) {
+        projectCards[i].style.transform = `skew(${Math.random() * 3 }deg, 0deg) rotate(${Math.random() * 10}deg)`;
+    } else {
+        projectCards[i].style.transform = `skew(${Math.random() * -3 }deg, 0deg) rotate(${Math.random() * -10}deg)`;
+    }
+    projectCards[i].style.filter = `hue-rotate(${-10 + (Math.random() * 20)}deg)`;
+}
+
+
+
+
+
+
+
 exitIntroductionButton.addEventListener('click', async function () {
     tl.fromTo(fullIntroductionContainer, 0.25, { opacity: 1 }, { opacity: 0 });
     scoreboardProjectVideo.play();
@@ -129,12 +145,21 @@ export async function openAboutSection() {
 export async function openProjectSection() {
     fade();
 
-    await sleep(500);
+    await sleep(600);
 
     projectContainer.style.display = 'flex';
     tl.fromTo(projectContainer, 0.5, { opacity: 0 }, { opacity: 1 }, '-=1.5');
 
-    //tl.fromTo('#about-section-title', 1.15, { marginRight: "-25vw", opacity: 0 }, { marginRight: "0", opacity: 1 }, '+=0');
+    for(let i = 0; i < projectCards.length; i ++) {
+        projectCards[i].style.opacity = 0;
+    }
+
+    await sleep(1250);
+
+    for(let i = 0; i < projectCards.length; i ++) {
+        tl.fromTo(projectCards[i], 2.5, { marginRight: `${-20+(Math.random() * -100)}vw`, marginTop: `${-50+(Math.random() * -100)}vw`, opacity: 0, scale: 0 }, { marginRight: "0", marginTop: "0", opacity: 1, scale: 0.85 }, '-=2.325');
+    }
+
 }
 
 const sleep = (milliseconds) => {
