@@ -70,8 +70,19 @@
 
     <div id="project-container">
         <h1 id="projects-title">Projects<span class="title-glow">Projects</span><span class="title-glow">Projects</span><span class="title-glow">Projects</span><span class="title-glow">Projects</span><span class="title-glow">Projects</span><span class="title-glow">Projects</span><span class="title-glow">Projects</span><span class="title-glow">Projects</span><span class="title-glow">Projects</span></h1>
+        <div id="project-summary-container">
+            <h3 id="project-summary-title">Project</h3>
+            <div id="project-information-container">
+            <div><a href="https://nimblevalley.github.io/home-run-api/site/" target="_blank">View Project</a>, <a href="https://github.com/NimbleValley/home-run-api/" target="_blank">View Code</a>, and <a href="https://x.com/distancetracker/" target="_blank">View Bot</a></div>
+                <h2><span style="font-weight: bold;">Idea:</span> Real-time bot and website for viewing MLB hits in 3d, with ability to switch stadiums to see where hit would have landed elsewhere</h2>
+                <h4>The initial vision worked out perfectly. The live update part runs on my laptop and connects to MLB APIs. It then pushes data to my local server, which in turn posts a graphic to Twitter and updates the data files of the website. The hits are then viewable on the website linked above. CHeck out the components below:</h4>
+                <img src="img/project/1.png" alt="Flow chart part 1">
+                <img src="img/project/2.png" alt="Flow chart part 2">
+            </div>
+            <button id="close-project-button">Close Project Card</button>
+        </div>
         <div id="card-container">
-            <div class="project-card">
+            <div class="project-card" data-id="0">
                 <h3 data-text="Home Run Database & Bot">Home Run Database & Bot</h3>
                 <p>HTML, Node.js, Python, Shell</p>
             </div>

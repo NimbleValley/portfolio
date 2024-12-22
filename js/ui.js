@@ -93,6 +93,26 @@ export async function closeAboutFeature() {
 export const projectContainer = document.getElementById('project-container');
 projectContainer.style.display = 'none';
 export const projectsTitle = document.getElementById('projects-title');
+const projectSummaryContainer = document.getElementById('project-summary-container');
+projectSummaryContainer.style.display = 'none';
+const projectTitleText = document.getElementById('project-summary-title');
+
+const projectInformationContainer = document.getElementById('project-information-container');
+const projectInformationTexts = [
+    `<div><a href="https://nimblevalley.github.io/home-run-api/site/" target="_blank">View Project</a>, <a href="https://github.com/NimbleValley/home-run-api/" target="_blank">View Code</a>, and <a href="https://x.com/distancetracker/" target="_blank">View Bot</a></div>
+    <h2><span style="font-weight: bold;">Idea:</span> Real-time bot and website for viewing MLB hits in 3d, with ability to switch stadiums to see where hit would have landed elsewhere</h2>
+    <h4>The initial vision worked out perfectly. The live update part runs on my laptop and connects to MLB APIs. It then pushes data to my local server, which in turn posts a graphic to Twitter and updates the data files of the website. The hits are then viewable on the website linked above. Check out the components below:</h4>
+    <img src="img/project/1.png" alt="Flow chart part 1">
+    <img src="img/project/2.png" alt="Flow chart part 2">`
+]
+
+const closeProjectButton = document.getElementById('close-project-button');
+closeProjectButton.addEventListener('click', async function() {
+    document.getElementById('home-button').style.display = 'inline';
+    tl.fromTo(projectSummaryContainer, 0.5, {scaleX: `1`}, {scaleX: `0`, ease: "bounce.out" });
+    await sleep(500);
+    projectSummaryContainer.style.display = 'none';
+});
 
 const projectCards = document.getElementsByClassName('project-card');
 for(let i = 0; i < projectCards.length; i ++) {
@@ -102,6 +122,34 @@ for(let i = 0; i < projectCards.length; i ++) {
         projectCards[i].style.transform = `skew(${Math.random() * -3 }deg, 0deg) rotate(${Math.random() * -10}deg)`;
     }
     projectCards[i].style.filter = `hue-rotate(${-10 + (Math.random() * 20)}deg)`;
+
+    projectCards[i].addEventListener('click', function(e) {
+        console.log(projectSummaryContainer.style.display == 'flex');
+        if(projectSummaryContainer.style.display == 'flex') {
+            return;
+        }
+        projectInformationContainer.innerHTML = '';
+        projectInformationContainer.innerHTML = projectInformationTexts[parseInt(this.getAttribute('data-id'))];
+        projectInformationContainer.opacity = 0;
+
+        document.getElementById('home-button').style.display = 'none';
+
+        projectTitleText.innerText = this.getElementsByTagName('h3')[0].innerText;
+
+        projectSummaryContainer.style.width = 0;
+        projectSummaryContainer.style.height = 0;
+
+        let x = e.clientX;
+        let y = e.clientY;
+
+        projectTitleText.opacity = 0;
+        projectSummaryContainer.style.transform = `scale(1, 1)`;
+
+        projectSummaryContainer.style.display = 'flex';
+        tl.fromTo(projectSummaryContainer, 0.85, { left: `${x/window.innerWidth*100}vw`, top: `${y/window.innerHeight*100}vh`, width: 0, height: 0}, {left: `5vw`, top: `5vh`, width: '90vw', height: '90vh', ease: "bounce.out" });
+        tl.fromTo(projectTitleText, 0.4, { opacity: 0, scaleX: 0.5, scaleY: 0.5}, {opacity: 1, scaleX: 1, scaleY: 1 });
+        tl.fromTo(projectInformationContainer, 0.5, {opacity: 0}, {opacity: 1 }, "-=0.15");
+    });
 }
 
 

@@ -540,6 +540,7 @@ p {
     align-items: center;
     overflow-y: scroll;
     overflow-x: hidden;
+    z-index: 1;
 }
 
 #projects-title {
@@ -558,8 +559,7 @@ p {
     transition: scale 0.2s;
 }
 
-#projects-title:hover {
-}
+#projects-title:hover {}
 
 @keyframes title-rattle {
     0% {
@@ -665,7 +665,7 @@ p {
     justify-content: space-between;
     border-radius: 0.75vw;
     box-shadow: inset 2vw 2vw 10vw rgba(48, 84, 124, 0.63), inset -2vw -2vw 10vw rgba(159, 47, 173, 0.5), 0px 0px 7vw rgba(255, 217, 0, 0.377);
-    scale: 0.85;
+    scale: 0.8  5;
     transition: scale 0.25s, transform 0.2s, box-shadow 0.15s;
 
     border: 0.35vw solid rgb(165, 165, 165);
@@ -716,6 +716,93 @@ p {
     box-shadow: inset 2vw 2vw 10vw rgb(0, 119, 255), inset -2vw -2vw 10vw rgb(225, 0, 255), 0px 0px 4vw rgba(255, 217, 0, 0.63);
 }
 
+#project-summary-container {
+    background: rgb(33, 19, 140);
+    background: linear-gradient(37deg, rgba(33, 19, 140, 1) 0%, rgba(60, 51, 61, 1) 35%, rgba(56, 45, 45, 1) 62%, rgba(157, 78, 28, 1) 100%);
+    width: 90vw;
+    height: 90vh;
+    position: fixed;
+    z-index: 5000;
+    border-radius: 1vh;
+    border: solid 0.4vw grey;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    color: rgb(207, 207, 207);
+    font-family: 'Chakra Petch', sans-serif;
+    align-items: center;
+    font-size: 2vw;
+
+    a {
+        color: orange;
+        font-weight: bold;
+        transition: color 0.15s;
+    }
+
+    a:hover {
+        color: rgb(212, 70, 26);
+    }
+
+    h2 {
+        font-family: 'Chakra Petch', sans-serif;
+        color: white;
+        font-weight: normal;
+        width: 90%;
+        padding: 2vw;
+        background-color: rgba(0, 0, 0, 0.253);
+    }
+
+    h4 {
+        color: white;
+        font-weight: normal;
+        width: 90%;
+        margin-top: 0;
+    }
+
+    img {
+        width: 50vw;
+        margin-left: -30vw;
+        image-rendering: crisp-edges;
+        margin-top: 1.1vh;
+    }
+}
+
+#project-summary-title {
+    color: white;
+    text-decoration: underline;
+    font-size: 10vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+#close-project-button {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Chakra Petch', sans-serif;
+    color: white;
+    font-size: 6vh;
+    background-color: rgba(0, 0, 0, 0.973);
+    border: none;
+    border-top: solid 0.4vw rgb(80, 80, 80);
+    transition: background-color 0.25s, letter-spacing 0.25s;
+    user-select: none;
+}
+
+#close-project-button:hover {
+    background-color: rgb(73, 4, 4);
+    cursor: pointer;
+    letter-spacing: 0.75vw;
+}
+
+#project-information-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
 
 /* SCROLLBAR */
