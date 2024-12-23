@@ -792,7 +792,7 @@ p {
 }
 
 #close-project-button:hover {
-    background-color: rgb(73, 4, 4);
+    background-color: rgb(30, 4, 73);
     cursor: pointer;
     letter-spacing: 0.75vw;
 }

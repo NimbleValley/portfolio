@@ -1,4 +1,5 @@
 const tl = new TimelineMax();
+const tl2 = new TimelineMax();
 
 export const scoreboardProjectVideo = document.getElementById('project-scoreboard-video');
 scoreboardProjectVideo.loop = true;
@@ -103,7 +104,49 @@ const projectInformationTexts = [
     <h2><span style="font-weight: bold;">Idea:</span> Real-time bot and website for viewing MLB hits in 3d, with ability to switch stadiums to see where hit would have landed elsewhere</h2>
     <h4>The initial vision worked out perfectly. The live update part runs on my laptop and connects to MLB APIs. It then pushes data to my local server, which in turn posts a graphic to Twitter and updates the data files of the website. The hits are then viewable on the website linked above. Check out the components below:</h4>
     <img src="img/project/1.png" alt="Flow chart part 1">
-    <img src="img/project/2.png" alt="Flow chart part 2">`
+    <img src="img/project/2.png" alt="Flow chart part 2">
+    <h4>The site then references stored CSV files. Using THREE.js, it loads in stadium models provided by MLB themselves and visualizes selected hits by the user.</h4>
+    `,
+    `<div><a href="https://github.com/NimbleValley/Scouting2024" target="_blank">View Code</a></div>
+    <h2><span style="font-weight: bold;">Use:</span> Data collection website for use with robotics team. In competitions, high ranking teams must draft other teams. In order to gain a competitive advantage, it is important to have numerous ways to analyze opponents and possible teammates.</h2>
+    <h2><span style="font-weight: bold;">Speed:</span> By not basing system around Google forms but instead a custom solution, it is much faster to upload data, as there are less security features and redirects. While less secure, this is important at competitions with limited access to wifi and cellular data.</h2>
+    <h2><span style="font-weight: bold;">Insights:</span> Data can be analyzed in many layers. Head to head comparisons of other teams, hypothetical simulations, and percentile graphs help eliminate time spent discussing possible partners and add to strategy.</h2>
+    <h4>On the client end, a custom HTML page allows easy data collection during matches. Then, the data is posted to a Google sheet using a custom Apps script. This allows for backups in case data is somehow corrupted or mismanaged. A separate static HTML page then loads a CSV file of the data hosted by Google that updates with the spereadsheet. Tools such as Chart.js allow for deep visualizations, insights, and analaysis.</h4>
+    <h4>Why not use a language such as R or python? JavaScript is the language I've used most and a big requirement for this project was to be hosted on the web. Additionally, using a static page keeps the price to nothing versus having some backend do calculations. However, the client side form is being updated to run on an Android app this year instead of a website.</h4>
+    `,
+    `<h2><span style="font-weight: bold;">Idea:</span> Create utility to determine distances from home plate on baeball fields using image segmentation. User can click anywhere on image and recieve a distance.</h2>
+    <h2>Roboflow, an open source project for image annotation and model training, was used to annotate image segmentation models. The model was then trained using YOLOv8.</h2>
+    <h2>A very detailed explanation can be found in the GitHub READ.md linked above.</h2>
+    <h4>
+        <span style="font-weight: bold;">Summary:</span> The project cotnains a backend using Node.js and a front end page. The ends communicate using Socket.io. 
+        <br><br>
+        <span style="font-weight: bold;">Image Segmentation: </span>
+        A trained YOLOv8 segmentation model identifies potential points along the infield. These points are processed through a connection between the client and server.
+        <br><br>
+        <span style="font-weight: bold;">User Input and Point Selection: </span>
+        Users select inner infield points to form bouding lines between bases. The intersection of these lines are the location of bases on the baseball diamond.
+        <br><br>
+        <span style="font-weight: bold;">Field Square Formation:</span>
+        The intersections of selected lines form a theoretical square, approximated to have sides of 86 feet. Vanishing points (two primary and one middle) are calculated to establish perspective lines.
+        <br><br>
+        <span style="font-weight: bold;">Grid Construction:</span>
+        Additional squares are iteratively drawn up the third base line and along the first base line using intersection points. A grid of 25 squares is created, aligned with the camera's perspective.
+        <br><br>
+        <span style="font-weight: bold;">World Coordinates:</span>
+        World coordinates are assigned to points, starting with home plate at (0, 0). These are calculated by adding the 86-foot constant to prior coordinates.
+        <br><br>
+        <span style="font-weight: bold;">Distance Calculation:</span>
+        When a user clicks, the algorithm locates the clicked point in the grid. If found, the large square containing the point is subdivided 10 times, with each iteration more precisely finding location. The final distance is computed using the Pythagorean theorem.
+        <br><br>
+        <span style="font-weight: bold;">Outfield Spot Segmentation: </span>
+        The image is segmented again to identify points along the outfield wall. While not always accurate, this works in well-lit, high-contrast environments.
+        <br><br>
+        The process combines geometry, iteration, and image segmentation to create a perspective-aligned grid and measure distances within the image.</h4>
+        `,
+        `<div><a href="https://github.com/NimbleValley/home-run-derby" target="_blank">View Code</a> and <a href="https://nimblevalley.github.io/home-run-derby/" target="_blank">View Project</a></div>
+        <h2><span style="font-weight: bold;">Summary:</span> Light and fun 3D web game! Play in a home run derby with scoring and physics. Hit as many home runs as possible. The game ends after 10 outs.</h2>
+        <h4>Developed using THREE.js for 3D rendering and Ammo.js for physics, creating a 3D game for the web was both diffcult and easy. On one hand, creating a smooth running 3D web game was a challenge. It's much easier to use a real game engine or make a stand alone executable. On the other hand, THREE and Ammo made it somewhat easy to create this game. Although simple, the logic behind it was a great exercise to learn more about these cool web tools. Projects like this led me to creating this 3D portfolio!</h4>
+        `
 ]
 
 const closeProjectButton = document.getElementById('close-project-button');
@@ -146,9 +189,9 @@ for(let i = 0; i < projectCards.length; i ++) {
         projectSummaryContainer.style.transform = `scale(1, 1)`;
 
         projectSummaryContainer.style.display = 'flex';
-        tl.fromTo(projectSummaryContainer, 0.85, { left: `${x/window.innerWidth*100}vw`, top: `${y/window.innerHeight*100}vh`, width: 0, height: 0}, {left: `5vw`, top: `5vh`, width: '90vw', height: '90vh', ease: "bounce.out" });
-        tl.fromTo(projectTitleText, 0.4, { opacity: 0, scaleX: 0.5, scaleY: 0.5}, {opacity: 1, scaleX: 1, scaleY: 1 });
-        tl.fromTo(projectInformationContainer, 0.5, {opacity: 0}, {opacity: 1 }, "-=0.15");
+        tl2.fromTo(projectSummaryContainer, 0.85, { left: `${x/window.innerWidth*100}vw`, top: `${y/window.innerHeight*100}vh`, width: 0, height: 0}, {left: `5vw`, top: `5vh`, width: '90vw', height: '90vh', ease: "bounce.out" });
+        tl2.fromTo(projectTitleText, 0.4, { opacity: 0, scaleX: 0.5, scaleY: 0.5}, {opacity: 1, scaleX: 1, scaleY: 1 });
+        tl2.fromTo(projectInformationContainer, 0.5, {opacity: 0}, {opacity: 1 }, "-=0.15");
     });
 }
 
@@ -205,7 +248,7 @@ export async function openProjectSection() {
     await sleep(1250);
 
     for(let i = 0; i < projectCards.length; i ++) {
-        tl.fromTo(projectCards[i], 2.5, { marginRight: `${-20+(Math.random() * -100)}vw`, marginTop: `${-50+(Math.random() * -100)}vw`, opacity: 0, scale: 0 }, { marginRight: "0", marginTop: "0", opacity: 1, scale: 0.85 }, '-=2.325');
+        tl.fromTo(projectCards[i], 2.5, {opacity: 0, scale: 0.85 }, { marginRight: "0", marginTop: "0", opacity: 1, scale: 0.85 }, '-=2.325');
     }
 
 }
