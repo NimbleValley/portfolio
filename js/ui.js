@@ -146,7 +146,15 @@ const projectInformationTexts = [
         `<div><a href="https://github.com/NimbleValley/home-run-derby" target="_blank">View Code</a> and <a href="https://nimblevalley.github.io/home-run-derby/" target="_blank">View Project</a></div>
         <h2><span style="font-weight: bold;">Summary:</span> Light and fun 3D web game! Play in a home run derby with scoring and physics. Hit as many home runs as possible. The game ends after 10 outs.</h2>
         <h4>Developed using THREE.js for 3D rendering and Ammo.js for physics, creating a 3D game for the web was both diffcult and easy. On one hand, creating a smooth running 3D web game was a challenge. It's much easier to use a real game engine or make a stand alone executable. On the other hand, THREE and Ammo made it somewhat easy to create this game. Although simple, the logic behind it was a great exercise to learn more about these cool web tools. Projects like this led me to creating this 3D portfolio!</h4>
-        `
+        `,
+        `<div><a href="https://github.com/NimbleValley/auto-scout" target="_blank">View Code</a> and <a href="https://blog.roboflow.com/robot-path-mapping/" target="_blank">View Article</a></div>
+        <h2><span style="font-weight: bold;">Summary:</span> Designed for FIRST robotics competition, this tool allows teams to track robot's path using match footage, similar to player trackers in soccer and baseball. It allows for deeper strategy and analysis of opponents as well as team mates.</h2>
+        <h4>This project has multiple parts: A <span style="font-weight: bold;">node.js</span> server to communicate with the front end, a trained <span style="font-weight: bold;">YOLOv8 object segmentation model</span> to detect field areas, and one more trained <span style="font-weight: bold;">YOLOv8 object detection model</span> to detect robots on the field. Then, it uses an object tracker to detect paths and poses as the video progresses. Using Roboflow's inference tools, a video is sent to their servers to segment frames. The video is processed beforehand using <span style="font-weight: bold;">FFMPEG</span>. Then, a user interface allows teams to analyze opponents' robot paths. </h4>
+    `,
+    `<div><a href="https://github.com/adamwilson24/congressional-app-challenge-2022" target="_blank">View Code</a>, <a href="https://adamwilson24.github.io/congressional-app-challenge-2022/" target="_blank">View Website</a>, and <a href="https://www.congressionalappchallenge.us/22-WI06/" target="_blank">View Challenge Page</a></div>
+    <h2><span style="font-weight: bold;">Creation:</span> Created on a team of three as a submission to the 2022 Congressional App Challenge. As the main team programmer, this served as one of my first websites.</h2>
+    <h2><span style="font-weight: bold;">Our project won FIRST PLACE in Wisconsin's 6th District, allowing us to travel to the U.S. capital building to share our creation.</span></h2>
+    <h4>Description: Mathware is an app that will start users with simple questions and work its way up in difficulty as the user progresses. Levels are locked until the user completes the previous level to ensure that the user has a fulfilling learning experience.</h4>`
 ]
 
 const closeProjectButton = document.getElementById('close-project-button');
